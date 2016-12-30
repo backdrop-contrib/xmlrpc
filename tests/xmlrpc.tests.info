@@ -1,0 +1,17 @@
+[XmlRpcMessagesTest]
+name = XML-RPC message and alteration
+description = Test large messages and method alterations.
+group = XML-RPC
+file = xmlrpc_messages.test
+
+[XmlRpcBasicTest]
+name = XML-RPC basic
+description = Perform basic XML-RPC tests that do not require additional callbacks.
+group = XML-RPC
+file = xmlrpc_basic.test
+
+[XmlRpcValidatorTest]
+name = XML-RPC validator
+description = See <a href="http://www.xmlrpc.com/validator1Docs">the xmlrpc validator1 specification</a>.
+group = XML-RPC
+file = xmlrpc_validator.test

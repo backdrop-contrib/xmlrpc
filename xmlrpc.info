@@ -1,0 +1,5 @@
+name = XML-RPC Server
+description = Provides XML-RPC functionality.
+package = Monitoring
+backdrop = 1.x
+type = module
