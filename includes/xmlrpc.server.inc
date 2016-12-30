@@ -191,7 +191,7 @@ function xmlrpc_server_call($xmlrpc_server, $methodname, $args) {
   if ($args && !is_array($args)) {
     $args = array($args);
   }
-  // Has this method been mapped to a Drupal function by us or by modules?
+  // Has this method been mapped to a Backdrop function by us or by modules?
   if (!isset($xmlrpc_server->callbacks[$methodname])) {
     return xmlrpc_error(-32601, t('Server error. Requested method @methodname not specified.', array("@methodname" => $xmlrpc_server->message->methodname)));
   }
@@ -275,7 +275,7 @@ function xmlrpc_server_multicall($methodcalls) {
   // See http://www.xmlrpc.com/discuss/msgReader$1208
   // To avoid multicall expansion attacks, limit the number of duplicate method
   // calls allowed with a default of 1. Set to -1 for unlimited.
-  $duplicate_method_limit = variable_get('xmlrpc_multicall_duplicate_method_limit', 1);
+  $duplicate_method_limit = config_get('xmlrpc.settings', 'multicall_duplicate_method_limit');
   $method_count = array();
   $return = array();
   $xmlrpc_server = xmlrpc_server_get();

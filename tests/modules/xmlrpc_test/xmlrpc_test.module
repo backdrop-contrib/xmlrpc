@@ -68,7 +68,7 @@ function xmlrpc_test_xmlrpc() {
  * Hide (or not) the system.methodSignature() service depending on a variable.
  */
 function xmlrpc_test_xmlrpc_alter(&$services) {
-  if (variable_get('xmlrpc_test_xmlrpc_alter', FALSE)) {
+  if (config_get('xmlrpc_test.settings', 'xmlrpc_alter')) {
     $remove = NULL;
     foreach ($services as $key => $value) {
       if (!is_array($value)) {

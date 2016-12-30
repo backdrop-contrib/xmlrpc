@@ -33,12 +33,12 @@ class XmlRpcMessagesTest extends BackdropWebTestCase {
    */
   protected function testAlterListMethods() {
     // Ensure xmlrpc_test_xmlrpc_alter() is disabled and retrieve regular list of methods.
-    variable_set('xmlrpc_test_xmlrpc_alter', FALSE);
+    config_set('xmlrpc_test.settings', 'xmlrpc_alter', FALSE);
     $url = url('xmlrpc.php', array('absolute' => TRUE));
     $methods1 = xmlrpc($url, array('system.listMethods' => array()));
 
     // Enable the alter hook and retrieve the list of methods again.
-    variable_set('xmlrpc_test_xmlrpc_alter', TRUE);
+    config_set('xmlrpc_test.settings', 'xmlrpc_alter', TRUE);
     $methods2 = xmlrpc($url, array('system.listMethods' => array()));
 
     $diff = array_diff($methods1, $methods2);

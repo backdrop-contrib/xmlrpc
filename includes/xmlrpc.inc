@@ -204,7 +204,7 @@ function xmlrpc_message_parse($xmlrpc_message) {
   try {
     $dom = new DOMDocument();
     @$dom->loadXML($xml);
-    if ($dom->getElementsByTagName('*')->length > variable_get('xmlrpc_message_maximum_tag_count', 30000)) {
+    if ($dom->getElementsByTagName('*')->length > config_get('xmlrpc.settings', 'message_maximum_tag_count')) {
       return FALSE;
     }
   }

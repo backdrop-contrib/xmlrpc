@@ -1,0 +1,5 @@
+{
+    "_config_name": "xmlrpc.settings",
+    "message_maximum_tag_count": 30000,
+    "multicall_duplicate_method_limit": 1
+}

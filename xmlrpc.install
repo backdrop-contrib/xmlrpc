@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * XML-RPC install
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function xmlrpc_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+
+  if ($phase == 'install') {
+    $clean_url = config_get('system.core', 'clean_url');
+    if ($clean_url != TRUE) {
+      $requirements['clean_url'] = array(
+        'title' => $t('Clean URL'),
+        'description' => $t('Clean URLs must be enabled in order to access XML-RPC. Configure <a href="@url">Clean URLs</a>.', array('@url' => 'admin/config/search/urls')),
+        'value' => t('not enabled'),
+        'severity' => REQUIREMENT_ERROR,
+      );
+    }
+  }
+
+  return $requirements;
+}

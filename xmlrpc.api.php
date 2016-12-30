@@ -12,11 +12,11 @@
  * particular XML-RPC methods are invoked by a client.
  *
  * @return
- *   An array which maps XML-RPC methods to Drupal functions. Each array
+ *   An array which maps XML-RPC methods to Backdrop functions. Each array
  *   element is either a pair of method => function or an array with four
  *   entries:
  *   - The XML-RPC method name (for example, module.function).
- *   - The Drupal callback function (for example, module_function).
+ *   - The Backdrop callback function (for example, module_function).
  *   - The method signature is an array of XML-RPC types. The first element
  *     of this array is the type of return value and then you should write a
  *     list of the types of the parameters. XML-RPC types are the following
@@ -40,10 +40,10 @@
  */
 function hook_xmlrpc() {
   return array(
-    'drupal.login' => 'drupal_login',
+    'backdrop.login' => 'backdrop_login',
     array(
-      'drupal.site.ping',
-      'drupal_directory_ping',
+      'backdrop.site.ping',
+      'backdrop_directory_ping',
       array('boolean', 'string', 'string', 'string', 'string', 'string'),
       t('Handling ping request'))
   );
@@ -68,7 +68,7 @@ function hook_xmlrpc() {
  */
 function hook_xmlrpc_alter(&$methods) {
   // Directly change a simple method.
-  $methods['drupal.login'] = 'mymodule_login';
+  $methods['backdrop.login'] = 'mymodule_login';
 
   // Alter complex definitions.
   foreach ($methods as $key => &$method) {
@@ -77,7 +77,7 @@ function hook_xmlrpc_alter(&$methods) {
       continue;
     }
     // Perform the wanted manipulation.
-    if ($method[0] == 'drupal.site.ping') {
+    if ($method[0] == 'backdrop.site.ping') {
       $method[1] = 'mymodule_directory_ping';
     }
   }
