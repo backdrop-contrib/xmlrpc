@@ -10,7 +10,7 @@
  * Process an XML-RPC request.
  */
 function xmlrpc_server_page() {
-  module_load_include('inc', 'xmlrpc');
+  module_load_include('inc', 'xmlrpc', 'includes/xmlrpc');
   xmlrpc_server(module_invoke_all('xmlrpc'));
 }
 
